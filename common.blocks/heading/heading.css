@@ -1,0 +1,19 @@
+.heading {
+    margin: 0 0 1em;
+    font-weight: normal;
+}
+
+.heading_level_2,
+h2 {
+    font-size: 32px;
+}
+
+.heading_level_3,
+h3 {
+    font-size: 27px;
+}
+
+.heading_level_4,
+h4 {
+    font-size: 20px;
+}

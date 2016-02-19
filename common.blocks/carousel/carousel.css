@@ -1,0 +1,8 @@
+.carousel__item {
+    max-height: 500px;
+}
+
+.carousel__img {
+    max-width: 100%;
+    margin: auto;
+}

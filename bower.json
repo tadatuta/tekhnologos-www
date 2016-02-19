@@ -1,0 +1,16 @@
+{
+  "name": "tekhnologos-subsite",
+  "version": "1.4.0",
+  "description": "tekhnologos subsite",
+  "bugs": "https://github.com/tadatuta-studio/tekhnologos-subsite/issues",
+  "ignore": [
+    ".bem/cache",
+    "node_modules",
+    "libs"
+  ],
+  "dependencies": {
+    "bem-components": "2.4.0",
+    "fotorama": "artpolikarpov/fotorama-bower#~4.6.4",
+    "bl-carousel": "^3.0.0"
+  }
+}
