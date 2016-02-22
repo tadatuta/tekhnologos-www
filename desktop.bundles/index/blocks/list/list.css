@@ -1,0 +1,12 @@
+.list__item {
+    position: relative;
+
+    list-style: none;
+}
+
+.list__item:before {
+    position: absolute;
+    left: -1.5em;
+
+    content: '—';
+}

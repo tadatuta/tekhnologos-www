@@ -1,9 +1,9 @@
 {
     "freeze_paths" : {
-        "libs/**": ":base64:",
         "libs/**/*.svg": ":encodeURIComponent:",
+        "libs/**": ":base64:",
         "*.blocks/**": "output/i/",
-        "*.blocks/**/*.svg": ":encodeURIComponent:"
+        "*.bundles/*/blocks/**": "output/i/"
     },
     "paths": {
         "./output/i/": "i/"

@@ -1,0 +1,14 @@
+.section_type_partners {
+    padding: 0 40px 40px;
+    background-image: linear-gradient(to right, rgba(30, 75, 115, 1),  rgba(255, 255, 255, 0)), url(section_type_home.svg);
+}
+
+.section_type_partners .heading_level_2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.section_type_partners .partner {
+    margin-right: 1em;
+    vertical-align: middle;
+}

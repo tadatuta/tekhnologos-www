@@ -1,0 +1,32 @@
+.section_type_cooperation {
+    color: #000;
+    background-image: url(section_type_home.svg);
+}
+
+.section_type_cooperation .section__inner {
+    padding-bottom: 40px;
+    /*background: rgba(29, 182, 234, .85);*/
+    background: rgba(182, 182, 182, .85);
+}
+
+.section_type_cooperation .section__column {
+    display: inline-block;
+    vertical-align: top;
+    /*width: 44%;*/
+    width: 27%;
+    margin: 0 3%;
+}
+
+.section_type_cooperation .section__item {
+    margin-bottom: 40px;
+}
+
+.section_type_cooperation .heading_level_2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section_type_cooperation  .heading_level_3 {
+    margin-top: 6px;
+    text-align: center;
+}

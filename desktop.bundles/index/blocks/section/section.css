@@ -1,0 +1,36 @@
+.section_type_about {
+    padding: 0 60px 40px 290px;
+    background: url(../logo/_type/logo_type_sign.svg) no-repeat;
+    background-position: 20px 48px;
+    background-size: 40%;
+}
+
+.section_type_projects {
+    position: relative;
+}
+
+.section_type_projects .heading_level_2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0px;
+
+    z-index: 99;
+
+    text-align: center;
+}
+
+.section_type_contacts {
+    padding: 0 40px 40px;
+    background: #d9e45a;
+}
+
+.section_type_contacts .fa_icon_map-marker {
+    float: left;
+    margin: 50px 26px 0 0;
+    color: #000;
+}
+
+.section_type_contacts .section__item {
+    float: left;
+}

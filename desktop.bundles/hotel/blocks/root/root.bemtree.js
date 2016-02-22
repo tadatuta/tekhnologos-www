@@ -24,7 +24,7 @@ block('root').replace()(function() {
             { elem: 'meta', attrs: { name: 'description', content: '' } },
             { elem: 'meta', attrs: { name: 'viewport', content: 'width=device-width, initial-scale=1' } },
             { elem: 'css', url: 'https://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic' },
-            { elem: 'css', url: relPathToRoot + 'index.min.css' },
+            { elem: 'css', url: relPathToRoot + 'hotel.min.css' },
             { elem: 'css', url: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' },
             [57, 60, 72, 76, 114, 120, 144, 152, 180].map(function(size) {
                 return {
@@ -47,7 +47,7 @@ block('root').replace()(function() {
                 attrs: { rel: 'canonical', href: 'http://tekhnologos.com/' + data.url + (data.url ? '/' : '') }
             }
         ],
-        scripts: [{ elem: 'js', url: relPathToRoot + 'index.min.js' }],
+        scripts: [{ elem: 'js', url: relPathToRoot + 'hotel.min.js' }],
         mods: { type: data.url.split('/').shift() }
     };
 });

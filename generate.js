@@ -7,7 +7,7 @@ var fs = require('fs'),
 
     outputFolder = 'output',
     contentFolder = 'content',
-    bundleName = 'index',
+    bundleName = 'hotel',
     pathToBundle = path.join('desktop.bundles', bundleName),
 
     model = require(path.resolve('.', contentFolder, 'model')),
@@ -19,8 +19,13 @@ mkdirp.sync(path.join(outputFolder, 'i'));
 fs.writeFileSync(path.join(outputFolder, 'CNAME'), 'tekhnologos.com');
 fs.writeFileSync(path.join(outputFolder, '.nojekyll'), '');
 
-glob.sync(path.join(contentFolder, '{favicons,files}', '*')).forEach(function(iconPath) {
-    fs.createReadStream(iconPath).pipe(fs.createWriteStream(path.join(outputFolder, iconPath.split('/').pop())));
+['html', 'min.js', 'min.css'].forEach(function(ext) {
+    fs.createReadStream(path.join('desktop.bundles', 'index', 'index' + '.' + ext))
+        .pipe(fs.createWriteStream(path.join(outputFolder, 'index.' + ext)));
+});
+
+glob.sync(path.join('static', '*')).forEach(function(filePath) {
+    fs.createReadStream(filePath).pipe(fs.createWriteStream(path.join(outputFolder, filePath.split('/').pop())));
 });
 
 ['min.js', 'min.css'].forEach(function(ext) {

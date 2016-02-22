@@ -1,0 +1,56 @@
+.partner
+{
+    display: inline-block;
+}
+
+.partner_title_tripadvisor {
+    width: 162px;
+    height: 35px;
+    background: url('tripadvisor.png') no-repeat;
+}
+
+.partner_title_booking {
+    width: 150px;
+    height: 25px;
+    background: url('booking.png') no-repeat;
+    background-size: 100%;
+}
+
+.partner_title_ostrovok {
+    width: 150px;
+    height: 20px;
+    background: url('ostrovok.svg') no-repeat;
+}
+
+.partner_title_n4 {
+    width: 125px;
+    height: 40px;
+    background: url('n4.png') no-repeat;
+    background-size: 100%;
+}
+
+.partner_title_vashotel {
+    width: 300px;
+    height: 50px;
+    background: url('vashotel.gif') no-repeat;
+}
+
+.partner_title_nezabarom {
+    width: 300px;
+    height: 50px;
+    background: url('nezabarom.gif') no-repeat;
+}
+
+.partner_title_bookit {
+    width: 300px;
+    height: 50px;
+    background: url('bookit.jpg') no-repeat;
+}
+
+.partner_title_genbank {
+    width: 134px;
+    height: 21px;
+    background: url('genbank.png') no-repeat;
+    background-size: 100%;
+
+}

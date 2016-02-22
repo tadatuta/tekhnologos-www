@@ -31,7 +31,7 @@
     "postinstall": "npm run deps",
     "deps": "bower i",
     "make": "enb make && node generate",
-    "watch": "watch-run -p '*.blocks/**,content/**' npm run make"
+    "watch": "watch-run -p '*.blocks/**,content/**,*.bundles/hotel/blocks/**' npm run make"
   },
   "private": true
 }
