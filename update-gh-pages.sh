@@ -5,7 +5,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     git config --global user.name "Travis"
 
     YENV=production npm run make
-    git clone -b gh-pages https://${GH_TOKEN}@github.com/tadatuta-studio/tekhnologos-subsite.git deploy
+    git clone -b gh-pages https://${GH_TOKEN}@github.com/tadatuta-studio/tekhnologos-www.git deploy
     cd deploy
     rm -rf *
     cd ..
