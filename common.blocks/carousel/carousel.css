@@ -1,8 +1,43 @@
 .carousel__item {
     max-height: 500px;
+    background: url(../page/pattern.svg);
 }
 
 .carousel__img {
     max-width: 100%;
     margin: auto;
+    box-shadow: 0 0 13px rgba(0,0,0,.5);
+}
+
+.carousel__paginator {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.carousel__paginator-button {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 7px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .4);
+}
+
+.carousel__paginator-button_state_active {
+    background: #3191dd;
+}
+
+.carousel__control.carousel__control_theme_default {
+    width: 28px;
+    text-align: left;
+    line-height: 34px;
+}
+
+.carousel__control.carousel__control_type_left {
+    width: 30px;
+    padding: 0 0 0 10px;
+}
+
+.carousel__control_type_right {
+    padding: 0 0 0 12px;
 }

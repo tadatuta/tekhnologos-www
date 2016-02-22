@@ -180,6 +180,9 @@ function buildFotoramaHtml(category, images, relPathToRoot) {
                 })
             },
             {
+                elem: 'paginator'
+            },
+            {
                 elem: 'control',
                 elemMods: { type: 'left', theme: 'default' },
                 content: '‹'

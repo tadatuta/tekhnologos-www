@@ -8,9 +8,10 @@
             elems: [
                 {
                     elem: 'control',
-                    elemMods: { type: 'right', theme: 'default' }
+                    mods: { type: 'right', theme: 'default' }
                 },
-                'img'
+                'img',
+                'paginator'
             ]
         },
         {
