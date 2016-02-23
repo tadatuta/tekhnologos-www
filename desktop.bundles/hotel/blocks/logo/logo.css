@@ -1,3 +1,9 @@
 .logo {
     font-size: 29px;
+    color: #1db6ea;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: #3191dd;
 }

@@ -1,14 +1,16 @@
-.footer__inner {
-    display: flex;
-    justify-content: space-between;
+.footer {
+    font-size: 12px;
+    line-height: 26px;
+    padding: 0 40px 4px 40px;
+    background: #000;
+    color: #fff;
 
-    padding: 24px 40px;
-
-    font-size: 14px;
-    line-height: 22px;
 }
 
-.footer .link {
-    color: #1f82cc;
-    text-decoration: none;
+.footer__column {
+    float: left;
+}
+
+.footer__column_pos_right {
+    float: right;
 }

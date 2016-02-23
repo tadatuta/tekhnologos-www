@@ -1,3 +1,4 @@
 ({
-    mustDeps: 'page'
+    mustDeps: 'page',
+    shouldDeps: 'clearfix'
 })

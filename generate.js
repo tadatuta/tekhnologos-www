@@ -19,13 +19,13 @@ mkdirp.sync(path.join(outputFolder, 'i'));
 fs.writeFileSync(path.join(outputFolder, 'CNAME'), 'tekhnologos.com');
 fs.writeFileSync(path.join(outputFolder, '.nojekyll'), '');
 
+glob.sync(path.join('static', '*')).forEach(function(filePath) {
+    fs.createReadStream(filePath).pipe(fs.createWriteStream(path.join(outputFolder, filePath.split('/').pop())));
+});
+
 ['html', 'min.js', 'min.css'].forEach(function(ext) {
     fs.createReadStream(path.join('desktop.bundles', 'index', 'index' + '.' + ext))
         .pipe(fs.createWriteStream(path.join(outputFolder, 'index.' + ext)));
-});
-
-glob.sync(path.join('static', '*')).forEach(function(filePath) {
-    fs.createReadStream(filePath).pipe(fs.createWriteStream(path.join(outputFolder, filePath.split('/').pop())));
 });
 
 ['min.js', 'min.css'].forEach(function(ext) {
@@ -33,14 +33,9 @@ glob.sync(path.join('static', '*')).forEach(function(filePath) {
         .pipe(fs.createWriteStream(path.join(outputFolder, bundleName + '.' + ext)));
 });
 
-glob.sync(path.join(contentFolder, 'images', '*')).forEach(function(image) {
-    fs.createReadStream(image).pipe(fs.createWriteStream(path.join(outputFolder, 'i', path.basename(image))));
-});
-
-// collect portfolio data and copy images
-var galleries = {};
-
-var imagesGlob = path.join(contentFolder, '*', 'slides', '*.jpg');
+// collect slider data and copy images
+var galleries = {},
+    imagesGlob = path.join(contentFolder, '*', 'slides', '*.jpg');
 
 glob.sync(imagesGlob).forEach(function(imagePath) {
     var categoryName = path.basename(path.dirname(path.dirname(imagePath))),
@@ -53,32 +48,10 @@ glob.sync(imagesGlob).forEach(function(imagePath) {
     fs.createReadStream(imagePath).pipe(fs.createWriteStream(path.join(outputFolder, destImagePath)));
 });
 
-// populate model with portfolio pages
-// Object.keys(galleries).forEach(function(categoryName) {
-//     var projects = galleries[categoryName];
-//
-//     Object.keys(projects).forEach(function(projectName) {
-//         var images = galleries[categoryName][projectName];
-//
-//         var pageUrl = ['portfolio', categoryName, projectName].join('/'),
-//             pageFolder = path.join(outputFolder, 'portfolio', categoryName, projectName),
-//             pageFilename= path.join(pageFolder, 'index.html');
-//
-//         model.push({
-//             md: [
-//                 '## ' + projectName,
-//                 '%%%gallery:' + categoryName + ':' + projectName + '%%%'
-//             ].join('\n'),
-//             url: pageUrl,
-//             title: projectName
-//         });
-//     });
-// });
-
 model.forEach(function(page) {
     var html = '',
         pageFolder = path.join(outputFolder, page.url),
-        pageFilename= path.join(pageFolder, 'index.html'),
+        pageFilename = path.join(pageFolder, 'index.html'),
         relPathToRoot = page.url ? page.url.split('/').map(function() {
             return '../';
         }).join('') : '';
@@ -108,57 +81,57 @@ model.forEach(function(page) {
     })));
 });
 
-function replaceGalleryTags(html, relPathToRoot) {
-    return html.replace(/%%%gallery:(\w+):(\w+)%%%/g, function(str, category, project) {
-        var projectImages = galleries[category] && galleries[category][project];
+// function replaceGalleryTags(html, relPathToRoot) {
+//     return html.replace(/%%%gallery:(\w+):(\w+)%%%/g, function(str, category, project) {
+//         var projectImages = galleries[category] && galleries[category][project];
+//
+//         return buildFotoramaHtml(category, project, projectImages, relPathToRoot);
+//     });
+// }
 
-        return buildFotoramaHtml(category, project, projectImages, relPathToRoot);
-    });
-}
-
-function buildFotoramaHtml(category, project, images, relPathToRoot) {
-    if (!images || !images.length) return '';
-
-    var captions = {};
-
-    try {
-        captions = require('./' + path.join('content', 'portfolio',  category, project));
-    } catch(err) {}
-
-    return BEMHTML.apply({
-        block: 'fotorama',
-        js: {
-            nav: 'thumbs',
-            allowfullscreen: true,
-            width: '450px',
-            maxheight: '450px',
-            thumbwidth: 128,
-            thumbheight: 128
-        },
-        content: images.map(function(img) {
-            var imageName = img.split('/').pop().split('.')[0];
-
-            return {
-                tag: 'img',
-                attrs: {
-                    src: relPathToRoot + img,
-                    'data-thumb': relPathToRoot + img,
-                    'data-caption': captions[imageName]
-                }
-            };
-        })
-    });
-}
+// function buildFotoramaHtml(category, project, images, relPathToRoot) {
+//     if (!images || !images.length) return '';
+//
+//     var captions = {};
+//
+//     try {
+//         captions = require('./' + path.join('content', 'portfolio',  category, project));
+//     } catch(err) {}
+//
+//     return BEMHTML.apply({
+//         block: 'fotorama',
+//         js: {
+//             nav: 'thumbs',
+//             allowfullscreen: true,
+//             width: '450px',
+//             maxheight: '450px',
+//             thumbwidth: 128,
+//             thumbheight: 128
+//         },
+//         content: images.map(function(img) {
+//             var imageName = img.split('/').pop().split('.')[0];
+//
+//             return {
+//                 tag: 'img',
+//                 attrs: {
+//                     src: relPathToRoot + img,
+//                     'data-thumb': relPathToRoot + img,
+//                     'data-caption': captions[imageName]
+//                 }
+//             };
+//         })
+//     });
+// }
 
 function replaceCarouselTags(html, relPathToRoot) {
     return html.replace(/%%%carousel:([\w-]+)%%%/g, function(str, category) {
         var projectImages = galleries[category];
 
-        return buildFotoramaHtml(category, projectImages, relPathToRoot);
+        return buildCarouselHtml(category, projectImages, relPathToRoot);
     });
 }
 
-function buildFotoramaHtml(category, images, relPathToRoot) {
+function buildCarouselHtml(category, images, relPathToRoot) {
     if (!images || !images.length) return '';
 
     // var captions = {};
@@ -198,27 +171,6 @@ function buildFotoramaHtml(category, images, relPathToRoot) {
                 content: '›'
             }
         ]
-        // block: 'fotorama',
-        // js: {
-        //     nav: 'thumbs',
-        //     allowfullscreen: true,
-        //     width: '450px',
-        //     maxheight: '450px',
-        //     thumbwidth: 128,
-        //     thumbheight: 128
-        // },
-        // content: images.map(function(img) {
-        //     var imageName = img.split('/').pop().split('.')[0];
-        //
-        //     return {
-        //         tag: 'img',
-        //         attrs: {
-        //             src: relPathToRoot + img,
-        //             'data-thumb': relPathToRoot + img,
-        //             'data-caption': captions[imageName]
-        //         }
-        //     };
-        // })
     });
 }
 
