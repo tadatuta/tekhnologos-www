@@ -67,7 +67,7 @@ model.forEach(function(page) {
         html = marked(md);
     }
 
-    html = replaceGalleryTags(html, relPathToRoot);
+    // html = replaceGalleryTags(html, relPathToRoot);
     html = replaceCarouselTags(html, relPathToRoot);
 
     fs.writeFileSync(pageFilename, BEMHTML.apply(BEMTREE.apply({
