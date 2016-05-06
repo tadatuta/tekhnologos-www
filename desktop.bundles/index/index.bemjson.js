@@ -439,10 +439,12 @@ module.exports = {
                                 title: 'tripadvisor',
                                 url: 'http://www.tripadvisor.ru/'
                             },
+                            /*
                             {
                                 title: 'booking',
                                 url: 'http://www.booking.com/'
                             },
+                            */
                             {
                                 title: 'ostrovok',
                                 url: 'https://ostrovok.ru/'
